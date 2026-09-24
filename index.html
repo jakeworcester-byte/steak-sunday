@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#100c0a">
+<title>Steak Sunday RSVP</title>
+<meta name="description" content="RSVP for Steak Sunday. Pick your cocktail, defend your steak temperature, and tell the sommelier what you want to drink.">
+<meta property="og:title" content="Steak Sunday: Place Your Order">
+<meta property="og:description" content="A Steak Saturday tradition, held on a Sunday. One USDA Prime ribeye, sliced and shared. Pick your cocktail and claim your seat.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%A5%A9</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div class="brand display"><span class="dot"></span> Steak Sunday</div>
+    <div class="countdown-chip mono" id="countChip">&middot;</div>
+  </div>
+</div>
+
+<header class="hero wrap">
+  <div class="kicker" id="kicker">Kansas City &middot; Jake and Hillary's &middot; Sunday, October 25</div>
+  <h1>Steak<br>Sunday</h1>
+  <p class="sub">A Steak Saturday tradition, held on a Sunday, because the calendar does not get a vote. One USDA Prime ribeye, sliced and shared. Your only job is to fill out this ticket.</p>
+</header>
+
+<main class="wrap">
+
+  <!-- ===================== WELCOME BACK ===================== -->
+  <div class="returning" id="returning" hidden>
+    <span class="live-chip"><i></i> Order on file</span>
+    <p id="returningText"></p>
+  </div>
+
+  <!-- ===================== THE TICKET ===================== -->
+  <form class="ticket" id="rsvp" novalidate autocomplete="off">
+    <div class="ticket-head">
+      <span class="live-chip" id="kitchenChip"><i></i> Kitchen is open</span>
+      <span class="ticket-no mono" id="ticketNo">Ticket #0000</span>
+    </div>
+
+    <!-- 01 guest -->
+    <fieldset class="q" id="q-guest">
+      <legend><span class="num">01</span> Who goes there?</legend>
+      <div class="select-wrap">
+        <select id="guest" aria-label="Your name" required>
+          <option value="">Pick your name from the reservation book</option>
+        </select>
+      </div>
+      <input type="text" id="guestOther" class="text" placeholder="Fine, a mystery guest. Your name, please." hidden maxlength="80">
+      <p class="quip" id="guestQuip" hidden></p>
+      <p class="err" data-for="guest">We need a name for the place card.</p>
+    </fieldset>
+
+    <!-- 02 cocktail -->
+    <fieldset class="q" id="q-cocktail">
+      <legend><span class="num">02</span> First pour</legend>
+      <p class="help">Cocktails are made to order when you walk in. Choose wisely, or at least confidently.</p>
+      <div class="drinks" id="drinks" role="radiogroup" aria-label="Cocktail choice"></div>
+      <p class="err" data-for="cocktail">The bartender is standing there, waiting. Pick a drink.</p>
+    </fieldset>
+
+    <!-- 03 steak -->
+    <fieldset class="q" id="q-steak">
+      <legend><span class="num">03</span> The only real argument</legend>
+      <p class="help">The ribeye is USDA Prime and cut thick. It gets cooked sous vide to medium rare, seared hard, then sliced and shared family style. Medium rare is the default. You may appeal.</p>
+      <div class="temps" role="radiogroup" aria-label="Steak temperature">
+        <button type="button" class="temp" data-temp="Medium rare" role="radio" aria-checked="false">
+          <span class="temp-swatch mr"></span>
+          <span class="temp-txt"><b>Medium rare</b><small>The correct answer</small></span>
+        </button>
+        <button type="button" class="temp" data-temp="Cooked further" role="radio" aria-checked="false">
+          <span class="temp-swatch wd"></span>
+          <span class="temp-txt"><b>I need mine cooked further</b><small>We are still friends</small></span>
+        </button>
+      </div>
+      <div class="verdict" id="steakVerdict" hidden></div>
+      <input type="text" id="steakNotes" class="text" placeholder="How would you like it? Medium? Medium well? Tell us, no judgment (some judgment)." hidden maxlength="200">
+      <p class="err" data-for="steak">Every steak needs a temperature. Even yours.</p>
+    </fieldset>
+
+    <!-- 04 dietary -->
+    <fieldset class="q" id="q-diet">
+      <legend><span class="num">04</span> Anything we should know? <span class="opt">optional</span></legend>
+      <textarea id="dietary" class="text" rows="2" maxlength="500" placeholder="Dairy-free and gluten-free are already covered across the menu. Allergies, restrictions, a sworn feud with fennel? Tell us here."></textarea>
+    </fieldset>
+
+    <!-- 05 wine -->
+    <fieldset class="q" id="q-wine">
+      <legend><span class="num">05</span> A question for the cellar</legend>
+      <p class="help">Sauvignon Blanc and Napa Valley Cabernet are the house pours. There is more where that came from, including another cocktail or, yes, a Coors Light. So: if you were bringing a bottle, what would it be?</p>
+      <button type="button" class="som" id="somBtn" aria-pressed="false">
+        <span class="som-check" aria-hidden="true"></span>
+        <span>What the sommelier recommends will be great <small>(Jake is the som, so feel free to choose something else...)</small></span>
+      </button>
+      <div class="or"><span>or name your bottle</span></div>
+      <input type="text" id="wineText" class="text" placeholder="Barolo. Champagne. A Coors Light, served with dignity." maxlength="200">
+      <p class="err" data-for="wine">Tap the sommelier button or name a bottle. Either one works.</p>
+    </fieldset>
+
+    <div class="fire">
+      <button type="submit" class="btn-fire" id="fireBtn">
+        <span class="fire-label">Fire the order</span>
+        <span class="fire-sub mono">sends it straight to the kitchen</span>
+      </button>
+      <p class="fine">Changed your mind? Come back to this page any time and resubmit. The newest ticket wins.</p>
+    </div>
+  </form>
+
+  <!-- ===================== ORDER UP ===================== -->
+  <section class="orderup" id="orderup" hidden aria-live="polite">
+    <div class="receipt" id="receipt">
+      <div class="receipt-top">
+        <div class="display">Order Up</div>
+        <div class="mono small" id="rcptMeta"></div>
+      </div>
+      <div class="receipt-body" id="rcptBody"></div>
+      <div class="receipt-foot mono">*** SEE YOU SUNDAY ***</div>
+    </div>
+    <p class="orderup-msg" id="orderupMsg"></p>
+    <div class="orderup-btns">
+      <button type="button" class="btn" id="editBtn">Change my order</button>
+      <a class="btn primary" id="trackerLink" href="#" target="_blank" rel="noopener">Track the ribeye live</a>
+    </div>
+  </section>
+
+  <!-- ===================== MENU PEEK ===================== -->
+  <section class="menu-sec" id="menu">
+    <details class="menu">
+      <summary><span>Peek at the menu</span><span class="mono small">steak, sides, spoilers</span></summary>
+      <div class="menu-grid">
+        <div class="menu-item star">
+          <h4>The Main Event</h4>
+          <p><b>USDA Prime Ribeye.</b> Wet-aged 21 to 28 days, cut thick, cooked sous vide to medium rare, seared, sliced and shared. Compound butter on the side.</p>
+        </div>
+        <div class="menu-item">
+          <h4>Sides</h4>
+          <p><b>Tallow Roasted Potatoes</b> in Wagyu-cross beef tallow. <b>Charred Broccoli</b> with lemon and garlic. <b>Calabrian Chili Cauliflower</b>, Hillary's signature, with a kick.</p>
+        </div>
+        <div class="menu-item">
+          <h4>Salads</h4>
+          <p><b>Caesar</b> with croutons and Parmesan on the side. <b>Fennel and Citrus</b> with arugula, orange, toasted nuts, and a sharp vinaigrette.</p>
+        </div>
+        <div class="menu-item">
+          <h4>Dessert</h4>
+          <p>Dark chocolate and fresh berries. Light, because you will have earned it.</p>
+        </div>
+        <div class="menu-item">
+          <h4>After Dinner</h4>
+          <p>Armagnac. Brandy's older, more interesting cousin from Gascony.</p>
+        </div>
+        <div class="menu-item">
+          <h4>Dietary Intel</h4>
+          <p>Almost everything is gluten-free and dairy-free by design. Butter and croutons live on the side so you can opt out.</p>
+        </div>
+      </div>
+    </details>
+
+    <div class="beefcam">
+      <span class="mono small">&#9679; KITCHEN WIRE</span>
+      <span id="wire">Tuning in...</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="big">Medium Rare Or Bust</div>
+  <p>
+    Steak Sunday &middot; hosted by Jake and Hillary &middot; Kansas City<br>
+    Sister site: <a id="footTracker" href="#" target="_blank" rel="noopener">The Meat Tracker</a> &middot; <a id="hostLink" href="#" target="_blank" rel="noopener">Host view</a>
+  </p>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script src="assets/config.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
