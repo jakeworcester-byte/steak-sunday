@@ -1,5 +1,5 @@
 /* =============================================================
-   STEAK SUNDAY - CONTROL PANEL
+   STEAK MONDAY - CONTROL PANEL
    Jake: this is the only file you should need to edit.
    Change something, save, commit, push. GitHub Pages redeploys.
    ============================================================= */
@@ -8,10 +8,10 @@ window.STEAK_CONFIG = {
 
   /* ---- The event ---------------------------------------- */
   event: {
-    name: "Steak Sunday",
+    name: "Steak Monday",
     date: "2026-10-26",                 // YYYY-MM-DD
     dateLabel: "Monday evening, October 26, 2026",
-    where: "Jake and Hillary's",
+    where: "Jake and Hilary's",
     city: "Kansas City",
     crew: "Development Marketing Leadership Team"
   },

@@ -1,5 +1,5 @@
 /* =============================================================
-   STEAK SUNDAY - the whole show
+   STEAK MONDAY - the whole show
    Renders the form, validates it, sends it to the Google Form
    backend, prints a receipt, and remembers the guest's order in
    their own browser so they can come back and change it.
@@ -60,7 +60,7 @@
     'Ribeye status: aging quietly in the basement fridge. It knows what it did.',
     'The sous vide has been told to expect company.',
     'Tallow has been rendered. The bourbon has been warned.',
-    'Hillary has approved the cauliflower heat level. It is not up for discussion.',
+    'Hilary has approved the cauliflower heat level. It is not up for discussion.',
     'Somebody asked for well done. The kitchen is processing its feelings.',
     'Armagnac inventory: adequate. Host restraint: to be determined.',
     'Primo XL preheat target: roughly the surface of a small star.',
@@ -141,7 +141,7 @@
     if (n > 1) txt = n + ' days to steak';
     else if (n === 1) txt = 'Tomorrow. Hydrate.';
     else if (n === 0) txt = 'Tonight. Forks up.';
-    else txt = 'Steak Sunday: complete';
+    else txt = 'Steak Monday: complete';
     $('countChip').textContent = txt;
     if (n < 0) {
       $('kitchenChip').innerHTML = '<i></i> Kitchen is closed';
