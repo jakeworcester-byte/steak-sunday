@@ -29,3 +29,9 @@ Add `?guest=` to preselect a name:
 
 Everything editable lives in `assets/config.js`: guest list, date, and the form
 field IDs. Copy lives in `assets/app.js` (drinks, verdicts, kitchen wire lines).
+
+## Publishing a change
+
+GitHub Pages lets browsers cache files for 10 minutes. After editing a file in
+`assets/`, bump the `?v=` number on its link at the bottom of `index.html` so
+guests get the new version right away.
