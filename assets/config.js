@@ -9,8 +9,8 @@ window.STEAK_CONFIG = {
   /* ---- The event ---------------------------------------- */
   event: {
     name: "Steak Sunday",
-    date: "2026-10-25",                 // YYYY-MM-DD
-    dateLabel: "Sunday, October 25, 2026",
+    date: "2026-10-26",                 // YYYY-MM-DD
+    dateLabel: "Monday evening, October 26, 2026",
     where: "Jake and Hillary's",
     city: "Kansas City",
     crew: "Development Marketing Leadership Team"

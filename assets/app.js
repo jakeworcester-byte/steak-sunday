@@ -140,7 +140,7 @@
     let txt;
     if (n > 1) txt = n + ' days to steak';
     else if (n === 1) txt = 'Tomorrow. Hydrate.';
-    else if (n === 0) txt = 'It is Steak Sunday';
+    else if (n === 0) txt = 'Tonight. Forks up.';
     else txt = 'Steak Sunday: complete';
     $('countChip').textContent = txt;
     if (n < 0) {

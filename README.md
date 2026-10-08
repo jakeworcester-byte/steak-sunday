@@ -1,6 +1,6 @@
 # Steak Sunday
 
-RSVP and order ticket for Steak Sunday (Sunday, October 25, 2026). Sister site to
+RSVP and order ticket for Steak Sunday (now Monday evening, October 26, 2026; the name stays). Sister site to
 [The Meat Tracker](https://jakeworcester-byte.github.io/meat-tracker/).
 
 Static site, no build step. GitHub Pages serves it straight from `main`.
