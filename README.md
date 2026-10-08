@@ -1,7 +1,7 @@
 # Steak Monday
 
-RSVP and order ticket for Steak Monday (Monday evening, October 26, 2026). The web address
-still says steak-sunday, which is the original name. Sister site to
+RSVP and order ticket for Steak Monday (Monday evening, October 26, 2026). Live at
+https://jakeworcester-byte.github.io/steak-monday/. Sister site to
 [The Meat Tracker](https://jakeworcester-byte.github.io/meat-tracker/).
 
 Static site, no build step. GitHub Pages serves it straight from `main`.
@@ -23,7 +23,7 @@ whose guest name starts with `[TEST]` is hidden from Host View.
 ## Personal links
 
 Add `?guest=` to preselect a name:
-`https://jakeworcester-byte.github.io/steak-sunday/?guest=Heather%20Elliott`
+`https://jakeworcester-byte.github.io/steak-monday/?guest=Heather%20Elliott`
 
 ## Changing things
 
